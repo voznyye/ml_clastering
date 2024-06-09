@@ -2,13 +2,15 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import matplotlib
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
 
-# Загрузка данных
-file_path = 'babyNamesUSYOB-mostpopular.csv'
+matplotlib.use('agg')
+
+# Загрузка данных с кластерами
+file_path = 'clustered_data.csv'
 data = pd.read_csv(file_path)
 
 # Оставляем только числовые столбцы
@@ -20,7 +22,7 @@ scaled_data = scaler.fit_transform(numerical_data)
 
 # Метод силуэта
 silhouette_scores = []
-k_range = range(2, 11)
+k_range = range(2, 20)
 
 for k in k_range:
     kmeans = KMeans(n_clusters=k, init='k-means++', random_state=42)

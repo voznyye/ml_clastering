@@ -9,7 +9,8 @@ import matplotlib
 matplotlib.use('agg')
 
 # Загрузка данных с кластерами
-data = pd.read_csv('clustered_data.csv')
+file_path = 'clustered_data.csv'
+data = pd.read_csv(file_path)
 
 # Оставляем только числовые столбцы для PCA
 numerical_data = data.select_dtypes(include=['float64', 'int64'])
