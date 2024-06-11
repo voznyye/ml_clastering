@@ -23,8 +23,7 @@ data['PCA1'] = pca_result[:, 0]
 data['PCA2'] = pca_result[:, 1]
 
 # Визуализация
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(14, 10))
 sns.scatterplot(x='PCA1', y='PCA2', hue='Cluster', data=data, palette='viridis')
 plt.title('K-means Clustering Results')
-plt.savefig('cluster_visualization.png')
-plt.show()
+plt.savefig('visual/cluster_visualization.png')

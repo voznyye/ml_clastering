@@ -21,7 +21,7 @@ scaled_data = scaler.fit_transform(numerical_data)
 
 # Метод локтя
 sse = []
-k_range = range(1, 20)
+k_range = range(1, 15)
 
 for k in k_range:
     kmeans = KMeans(n_clusters=k, init='k-means++', random_state=42)
@@ -34,5 +34,4 @@ plt.plot(k_range, sse, 'bx-')
 plt.xlabel('Number of clusters')
 plt.ylabel('Sum of squared errors (SSE)')
 plt.title('Elbow Method For Optimal k')
-plt.savefig('elbow_method.png')
-plt.show()
+plt.savefig('visual/elbow_method.png')
