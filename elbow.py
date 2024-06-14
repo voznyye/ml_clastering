@@ -9,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 matplotlib.use('agg')
 
 # Загрузка данных с кластерами
-file_path = 'clustered_data.csv'
+file_path = 'babyNamesUSYOB-full.csv'
 data = pd.read_csv(file_path)
 
 # Оставляем только числовые столбцы
@@ -21,7 +21,7 @@ scaled_data = scaler.fit_transform(numerical_data)
 
 # Метод локтя
 sse = []
-k_range = range(1, 15)
+k_range = range(1, 30)
 
 for k in k_range:
     kmeans = KMeans(n_clusters=k, init='k-means++', random_state=42)

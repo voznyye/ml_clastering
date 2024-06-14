@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 # Загрузка данных
-file_path = 'babyNamesUSYOB-full.csv'
+file_path = 'babyNamesUSYOB-mostpopular.csv'
 data = pd.read_csv(file_path)
 
 # Предположим, что нам нужно кластеризовать данные на основе числовых признаков
@@ -17,7 +17,7 @@ scaler = StandardScaler()
 scaled_data = scaler.fit_transform(numerical_data)
 
 # Кластеризация методом k-means++
-kmeans = KMeans(n_clusters=7, init='k-means++', random_state=42)
+kmeans = KMeans(n_clusters=8, init='k-means++', random_state=42)
 kmeans.fit(scaled_data)
 
 # Сохранение результатов

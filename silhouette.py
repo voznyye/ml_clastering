@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 matplotlib.use('agg')
 
 # Загрузка данных с кластерами
-file_path = 'clustered_data.csv'
+file_path = 'babyNamesUSYOB-mostpopular.csv'
 data = pd.read_csv(file_path)
 
 # Оставляем только числовые столбцы
@@ -22,14 +22,13 @@ scaled_data = scaler.fit_transform(numerical_data)
 
 # Метод силуэта
 silhouette_scores = []
-k_range = range(4, 10)
+k_range = range(6, 14)
 
 for k in k_range:
     kmeans = KMeans(n_clusters=k, init='k-means++', random_state=42)
     kmeans.fit(scaled_data)
     score = silhouette_score(scaled_data, kmeans.labels_)
     silhouette_scores.append(score)
-    print('done')
 
 # Визуализация метода силуэта
 plt.figure(figsize=(10, 8))
