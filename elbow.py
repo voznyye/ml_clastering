@@ -1,5 +1,3 @@
-# elbow_method.py
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
@@ -8,18 +6,18 @@ from sklearn.preprocessing import StandardScaler
 
 matplotlib.use('agg')
 
-# Загрузка данных с кластерами
-file_path = 'babyNamesUSYOB-full.csv'
+# Load data with clusters
+file_path = 'babyNamesUSYOB-mostpopular.csv'
 data = pd.read_csv(file_path)
 
-# Оставляем только числовые столбцы
+# Keep only numerical columns
 numerical_data = data.select_dtypes(include=['float64', 'int64'])
 
-# Стандартизация данных
+# Standardize the data
 scaler = StandardScaler()
 scaled_data = scaler.fit_transform(numerical_data)
 
-# Метод локтя
+# Elbow method
 sse = []
 k_range = range(1, 30)
 
@@ -28,7 +26,7 @@ for k in k_range:
     kmeans.fit(scaled_data)
     sse.append(kmeans.inertia_)
 
-# Визуализация метода локтя
+# Visualization of the elbow method
 plt.figure(figsize=(10, 8))
 plt.plot(k_range, sse, 'bx-')
 plt.xlabel('Number of clusters')

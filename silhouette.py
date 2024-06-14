@@ -1,5 +1,3 @@
-# silhouette_method.py
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
@@ -9,18 +7,18 @@ from sklearn.preprocessing import StandardScaler
 
 matplotlib.use('agg')
 
-# Загрузка данных с кластерами
+# Load data with clusters
 file_path = 'babyNamesUSYOB-mostpopular.csv'
 data = pd.read_csv(file_path)
 
-# Оставляем только числовые столбцы
+# Keep only numerical columns
 numerical_data = data.select_dtypes(include=['float64', 'int64'])
 
-# Стандартизация данных
+# Standardize the data
 scaler = StandardScaler()
 scaled_data = scaler.fit_transform(numerical_data)
 
-# Метод силуэта
+# Silhouette method
 silhouette_scores = []
 k_range = range(6, 14)
 
@@ -29,8 +27,9 @@ for k in k_range:
     kmeans.fit(scaled_data)
     score = silhouette_score(scaled_data, kmeans.labels_)
     silhouette_scores.append(score)
+    print("iter done)")
 
-# Визуализация метода силуэта
+# Visualization of the silhouette method
 plt.figure(figsize=(10, 8))
 plt.plot(k_range, silhouette_scores, 'bx-')
 plt.xlabel('Number of clusters')
